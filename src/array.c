@@ -75,6 +75,7 @@ int binarySearch(int arr[], int size, int value){
     }
     return -1;
 }
+/* sorted an array by bubble */
 void bubbleSort(int arr[], int size){
     int temp;
     int i,j;

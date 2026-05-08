@@ -15,7 +15,7 @@ int insertBeginning(List* L, int value){
     struct Node* new_node = (struct Node*) malloc (sizeof(struct Node));
 
     if(new_node == NULL)
-       retrn -1;
+       return -1;
 
     new_node->data = value;
     new_node->next = L->head;

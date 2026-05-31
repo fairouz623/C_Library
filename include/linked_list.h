@@ -2,12 +2,6 @@
 #define LINKED_LIST_H
 #include"common.h"
 
-typedef struct node{
-    int value;
-    struct node *next;
-}node;
-typedef node *List;
-
 void initList(List* L);
 int insertBeginning(List* L, int value);
 int insertEnd(List* L, int value);

@@ -28,6 +28,12 @@ typedef struct {
     int size;
 } ArrayList;
 
+/* pointer-baised singly linked list */
+typedef struct {
+    Node* head;
+    int size;
+}List;
+
 /* Pointer-based doubly linked list */
 typedef struct {
     DNode* head;

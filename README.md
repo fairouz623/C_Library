@@ -5,8 +5,25 @@
 4-Alioui Asma
 5-Zenbout Ariame
 ----List of functions and procedure:-----
-==========Modulr 1: array==========
+
+Module 1:
+
 ========1D Array=======
+========2D Array=======
+=====Dynamic Array=====
+
+Module 2:
+
+===Singl Linked List===
+===Double Linked List===
+=====Stack=====
+=====Queues=====
+
+Module 3:
+===Files===
+
+Module 4:
+===strings===
 
 
 

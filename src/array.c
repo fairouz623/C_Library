@@ -31,15 +31,19 @@ int insertAt(int *arr, int* size, int index, int value) {
     return 0;
 }
 /* delet value at index - shift element left first */
-int deleteAt(int *arr[], int *size, int index, int value){
-    if( index < 0 || index > *size )
+int deleteAt(int arr[], int *size, int index){
+    if( index < 0 || index >= *size )
+
        return -1;
-    if(*size >= MAX_1D)
-       return -1;
+
     int i;
-    for(i = index+1 ; i < *size ; i++)
-        arr[i] = arr[i-1];
+
+    for(i = index+1 ; i < *size-1 ; i++){
+
+        arr[i] = arr[i+1];
+    }
     (*size)--;
+
     return 0;
 }
 /* search a value at index - cel by cel */
@@ -75,23 +79,35 @@ int binarySearch(int arr[], int size, int value){
     }
     return -1;
 }
-/* sorted an array by bubble */
-void bubbleSort(int arr[], int size){
-    int temp;
-    int i,j;
-    for(i=0;i<size;i++){
-        for(j=i;j<size;j++){
-            if (arr[j]>arr[j+1])  
-                temp=arr[i];
-                arr[i]=arr[i+1];
-                arr[i+1]=temp;
-                size--;
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int swapped = 0;
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+        if (!swapped) break; // Optimization step
     }
 }
-}
-void selectionSort(int arr[], int size){
 
+void selectionSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int min_idx = i;
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[min_idx]) min_idx = j;
+        }
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
 }
+
+
 void insertionSort(int arr[], int size){
 
 }
@@ -116,12 +132,12 @@ int findMax(int arr[], int size){
 }
 int sumArray(int arr[], int size){
     int n,total;
-    if ( size = 0)
+    if ( size <= 0)
         return 0;
     if (n = 0)
        return total;
     else 
-       return sumArray(n-1,total+n);
+       return arr[size-1]+sumArray(arr, size-1);
 
 }
 double averageArray(int arr[], int size){
@@ -144,4 +160,86 @@ void rotateLeft(int arr[], int size, int k){
 }
 void mergeSortedArrays(int a[], int na, int b[], int nb, int out[]){
     
+}
+void printMatrix(int m[][MAX_COLS], int rows, int cols)
+{
+    if (m == NULL || rows <= 0 || cols <= 0)
+    {
+        return;
+    }
+    for (int i = 0; i < rows; i++)
+    {
+        printf("["); // instead of doing another loop one could call the printArray function inside
+        for (int j = 0; j < cols; j++)
+        {
+            printf("%4d", m[i][j]);
+        }
+        printf("]\n");
+    }
+}
+void addMatrices(int a[][MAX_COLS], int b[][MAX_COLS], int r[][MAX_COLS], int rows, int cols)
+{
+    if (a == NULL || b == NULL || r == NULL || a == r || b == r)
+    {
+        return;
+    }
+
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            r[i][j] = a[i][j] + b[i][j];
+        }
+    }
+}
+int sumDiagonal(int m[][MAX_COLS], int n)
+{
+    if (m == NULL || n <= 0 || n > MAX_ROWS)
+    {
+        return 0;
+    }
+    return m[n - 1][n - 1] + sumDiagonal(m, n - 1);
+}
+
+/* */
+int* createDynamicArray(int capacity)
+{
+    int *arr = (int*) malloc(capacity * sizeof(int));
+
+    if (arr == NULL){
+        printf("ERROR");
+        return NULL;
+    }else{
+        return arr;
+    }
+
+}
+
+/* */
+void fillArray(int* arr, int size)
+{
+     int i;
+      for(i = 0; i < size; i++){
+
+            scanf("%d", &arr[i]);
+      }
+}
+
+/* */
+int* resizeArray(int* arr, int newCapacity)
+{
+     int *NewArr = (int*) realloc(arr, newCapacity * sizeof(int));
+
+     if(NewArr == NULL){
+            free(arr);
+
+     }
+     return 1;
+}
+
+/* */
+void freeArray(int* arr)
+{
+     free(arr);
+     arr = NULL;
 }
